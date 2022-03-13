@@ -1,3 +1,4 @@
+import { ExpenseDate } from "./ExpenseDate/ExpenseDate";
 const ExpenseItem = ({ expenses }) => {
   return (
     <div>
@@ -8,7 +9,7 @@ const ExpenseItem = ({ expenses }) => {
             <h2>Expense Item</h2>
             <p>Title: {expense.title}</p>
             <p>Amount: {expense.amount}</p>
-            <p>Date: {expense.date.toISOString()}</p>
+            <ExpenseDate date={expense.date} />
           </li>
         ))}
       </ul>
