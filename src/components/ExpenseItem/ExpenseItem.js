@@ -1,4 +1,4 @@
-import { ExpenseDate } from "./ExpenseDate/ExpenseDate";
+import { ExpenseDate } from "../ExpenseDate/ExpenseDate";
 const ExpenseItem = ({ expenses }) => {
   return (
     <div>
