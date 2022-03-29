@@ -1,4 +1,5 @@
 import "./App.css";
+import { ExpenseForm } from "./components/ExpenseForm/ExpenseForm";
 import { Expenses } from "./components/Expenses/Expenses";
 
 const App = () => {
@@ -30,6 +31,7 @@ const App = () => {
   ];
   return (
     <div className="App">
+      <ExpenseForm />
       <Expenses expenses={expenses}></Expenses>
     </div>
   );
