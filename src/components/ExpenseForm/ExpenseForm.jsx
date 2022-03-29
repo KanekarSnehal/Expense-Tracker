@@ -3,18 +3,29 @@ import { useState } from "react";
 export const ExpenseForm = () => {
   const [expenseInfo, setExpenseInfo] = useState({
     title: "",
-    amount: null,
-    date: null,
+    amount: "",
+    date: "",
   });
   const changeHandler = (e) => {
-    setExpenseInfo({ ...expenseInfo, [e.targte.name]: e.target.value });
+    setExpenseInfo({ ...expenseInfo, [e.target.name]: e.target.value });
+  };
+  const submitHanlder = (e) => {
+    e.preventDefault();
+    const expenseData = {
+      title: expenseInfo.title,
+      amount: expenseInfo.amount,
+      date: new Date(expenseInfo.date),
+    };
+    console.log(expenseData);
+    setExpenseInfo({ ...expenseInfo, title: "", amount: "", date: "" });
   };
   return (
-    <form>
+    <form onSubmit={submitHanlder}>
       <lable>Title:</lable>
       <input
         type="text"
         name="title"
+        value={expenseInfo.title}
         placeholder="enter title"
         onChange={changeHandler}
       />
@@ -22,6 +33,7 @@ export const ExpenseForm = () => {
       <input
         type="number"
         name="amount"
+        value={expenseInfo.amount}
         placeholder="enter expense"
         onChange={changeHandler}
       />
@@ -29,6 +41,7 @@ export const ExpenseForm = () => {
       <input
         type="date"
         name="date"
+        value={expenseInfo.date}
         placeholder="enter date"
         min="2019-01-01"
         max="2022-12-31"
