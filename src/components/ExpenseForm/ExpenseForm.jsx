@@ -1,43 +1,38 @@
 import { useState } from "react";
 
 export const ExpenseForm = () => {
-  const [title, setTitle] = useState("");
-  const [amount, setAmount] = useState(null);
-  const [date, setDate] = useState(null);
-
-  const titleChangeHandler = (e) => {
-    setTitle(e.target.value);
-    console.log(e.target.value);
-  };
-  const amountChangeHandler = (e) => {
-    setAmount(e.target.value);
-    console.log(e.target.value);
-  };
-  const dateChangeHandler = (e) => {
-    setDate(e.target.value);
-    console.log(e.target.value);
+  const [expenseInfo, setExpenseInfo] = useState({
+    title: "",
+    amount: null,
+    date: null,
+  });
+  const changeHandler = (e) => {
+    setExpenseInfo({ ...expenseInfo, [e.targte.name]: e.target.value });
   };
   return (
     <form>
       <lable>Title:</lable>
       <input
         type="text"
+        name="title"
         placeholder="enter title"
-        onChange={titleChangeHandler}
+        onChange={changeHandler}
       />
       <label>Amount</label>
       <input
         type="number"
+        name="amount"
         placeholder="enter expense"
-        onChange={amountChangeHandler}
+        onChange={changeHandler}
       />
       <label>Date</label>
       <input
         type="date"
+        name="date"
         placeholder="enter date"
         min="2019-01-01"
         max="2022-12-31"
-        onChange={dateChangeHandler}
+        onChange={changeHandler}
       />
       <button type="submit">Add Expense</button>
     </form>
