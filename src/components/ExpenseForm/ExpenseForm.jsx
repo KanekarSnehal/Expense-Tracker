@@ -1,9 +1,22 @@
+import { useState } from "react";
+
 export const ExpenseForm = () => {
+  const [title, setTitle] = useState("");
+  const [amount, setAmount] = useState(null);
+  const [date, setDate] = useState(null);
+
   const titleChangeHandler = (e) => {
+    setTitle(e.target.value);
     console.log(e.target.value);
   };
-  const amountChangeHandler = (e) => console.log(e.target.value);
-  const dateChangeHandler = (e) => console.log(e.target.value);
+  const amountChangeHandler = (e) => {
+    setAmount(e.target.value);
+    console.log(e.target.value);
+  };
+  const dateChangeHandler = (e) => {
+    setDate(e.target.value);
+    console.log(e.target.value);
+  };
   return (
     <form>
       <lable>Title:</lable>
