@@ -1,14 +1,16 @@
 import { useState } from "react";
 
-export const ExpenseForm = () => {
+export const ExpenseForm = (props) => {
   const [expenseInfo, setExpenseInfo] = useState({
     title: "",
     amount: "",
     date: "",
   });
+
   const changeHandler = (e) => {
     setExpenseInfo({ ...expenseInfo, [e.target.name]: e.target.value });
   };
+
   const submitHanlder = (e) => {
     e.preventDefault();
     const expenseData = {
@@ -16,7 +18,9 @@ export const ExpenseForm = () => {
       amount: expenseInfo.amount,
       date: new Date(expenseInfo.date),
     };
-    console.log(expenseData);
+
+    props.onSaveExpenseData(expenseData);
+
     setExpenseInfo({ ...expenseInfo, title: "", amount: "", date: "" });
   };
   return (

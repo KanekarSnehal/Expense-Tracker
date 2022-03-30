@@ -29,9 +29,27 @@ const App = () => {
       date: new Date(2022, 3, 23),
     },
   ];
+
+  const saveExpenseDataHandler = (enteredExpenseData) => {
+    const expensedata = {
+      ...enteredExpenseData,
+      id: Math.random().toString(),
+    };
+    console.log(expensedata);
+    expenses.concat(expensedata);
+    console.log(expenses);
+
+    addExpenseHandler(expensedata);
+  };
+
+  const addExpenseHandler = (expensedata) => {
+    expenses.concat(expensedata);
+    console.log(expenses);
+  };
+
   return (
     <div className="App">
-      <ExpenseForm />
+      <ExpenseForm onSaveExpenseData={saveExpenseDataHandler} />
       <Expenses expenses={expenses}></Expenses>
     </div>
   );
