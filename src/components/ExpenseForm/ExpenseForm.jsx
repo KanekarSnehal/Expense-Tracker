@@ -25,7 +25,7 @@ export const ExpenseForm = (props) => {
   };
   return (
     <form onSubmit={submitHanlder}>
-      <lable>Title:</lable>
+      <label>Title:</label>
       <input
         type="text"
         name="title"
