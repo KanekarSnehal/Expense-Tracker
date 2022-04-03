@@ -11,10 +11,23 @@ export const ExpenseItem = ({ expenses, setExpenses }) => {
   const handleYearChange = (e) => setYear(e.target.value);
 
   const newData = expenses.filter((expenseItem) => {
-    console.log(expenseItem.date.getFullYear(), Number(year));
     return expenseItem.date.getFullYear() === Number(year);
   });
-  console.log(newData);
+
+  let expenseContent = <h1>No expense found</h1>;
+
+  if (newData.length > 0) {
+    expenseContent = newData.map((expense) => (
+      <li key={expense.id} className={expense.id}>
+        <h2>Expense Item</h2>
+        <p>Title: {expense.title}</p>
+        <p>Amount: {expense.amount}</p>
+        <ExpenseDate date={expense.date} />
+        <button onClick={() => deleteHandler(expense)}>Delete Expense</button>
+        <hr />
+      </li>
+    ));
+  }
   return (
     <div>
       <h2>Expense Items </h2>
@@ -25,20 +38,7 @@ export const ExpenseItem = ({ expenses, setExpenses }) => {
         <option value="2020">2020</option>
         <option value="2019">2019</option>
       </select>
-      <ul>
-        {newData.map((expense) => (
-          <li key={expense.id} className={expense.id}>
-            <h2>Expense Item</h2>
-            <p>Title: {expense.title}</p>
-            <p>Amount: {expense.amount}</p>
-            <ExpenseDate date={expense.date} />
-            <button onClick={() => deleteHandler(expense)}>
-              Delete Expense
-            </button>
-            <hr />
-          </li>
-        ))}
-      </ul>
+      <ul>{expenseContent}</ul>
     </div>
   );
 };
