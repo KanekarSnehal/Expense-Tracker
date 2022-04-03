@@ -18,14 +18,19 @@ export const ExpenseItem = ({ expenses, setExpenses }) => {
 
   if (newData.length > 0) {
     expenseContent = newData.map((expense) => (
-      <li key={expense.id} className={expense.id}>
-        <h2>Expense Item</h2>
-        <p>Title: {expense.title}</p>
-        <p>Amount: {expense.amount}</p>
-        <ExpenseDate date={expense.date} />
-        <button onClick={() => deleteHandler(expense)}>Delete Expense</button>
-        <hr />
-      </li>
+      <>
+        <li key={expense.id} className={expense.id}>
+          <h2>Expense Item</h2>
+          <p>Title: {expense.title}</p>
+          <p>Amount: {expense.amount}</p>
+          <ExpenseDate date={expense.date} />
+          <button onClick={() => deleteHandler(expense)}>Delete Expense</button>
+          <hr />
+        </li>
+        {newData.length === 1 && (
+          <h4>Only single Expense here. Please add more...</h4>
+        )}
+      </>
     ));
   }
   return (
