@@ -2,6 +2,7 @@ import "./App.css";
 import { ExpenseForm } from "./components/ExpenseForm/ExpenseForm";
 import { useState } from "react";
 import { ExpenseItem } from "./components/ExpenseItem/ExpenseItem";
+import { ExpensesChart } from "./components/ExpensesChart/ExpensesChart";
 
 const DUMMY_DATA = [
   {
@@ -72,6 +73,7 @@ const App = () => {
   return (
     <div className="App">
       <ExpenseForm onSaveExpenseData={saveExpenseDataHandler} />
+      <ExpensesChart expenses={expenses} />
       <ExpenseItem expenses={expenses} setExpenses={setExpenses}></ExpenseItem>
     </div>
   );
